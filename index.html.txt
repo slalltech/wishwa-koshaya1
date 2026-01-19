@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>විශ්වකෝෂය - YouTube දැනුම් නාලිකාව</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="විශ්වය, විද්‍යාව, මිනිස් අභිරහස් ගැන සිංහලෙන් YouTube වීඩියෝ සහ ලිපි">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔭</text></svg>">
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --card:#1f2833;
+      --accent:#66fcf1;
+      --text:#c5c6c7;
+      --heading:#ffffff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Noto Sans Sinhala",sans-serif}
+    body{background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth}
+    header{
+      position:fixed;top:0;left:0;width:100%;background:rgba(11,12,16,.85);backdrop-filter:blur(8px);
+      display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;z-index:999;
+    }
+    header h1{font-size:1.5rem;color:var(--accent)}
+    nav a{color:var(--heading);margin-left:1.2rem;text-decoration:none;transition:.3s}
+    nav a:hover{color:var(--accent)}
+    section{max-width:1100px;margin:0 auto;padding:5rem 1.5rem 3rem}
+    .hero{text-align:center;padding:7rem 1rem 5rem}
+    .hero h2{font-size:2.8rem;color:var(--heading);margin-bottom:1rem;animation:fadeInUp 1s}
+    .hero p{font-size:1.2rem;max-width:600px;margin:0 auto 2rem;animation:fadeInUp 1s .3s both}
+    .btn{
+      display:inline-block;background:var(--accent);color:#000;padding:.75rem 1.8rem;
+      border-radius:30px;font-weight:600;text-decoration:none;transition:.3s;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(102,252,241,.4)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+    .card{
+      background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.5);
+      transform:translateY(40px);opacity:0;transition:.5s;
+    }
+    .card.visible{transform:translateY(0);opacity:1}
+    .card img{width:100%;height:170px;object-fit:cover}
+    .card-content{padding:1.3rem}
+    .card h3{color:var(--heading);margin-bottom:.5rem}
+    .card p{font-size:.95rem;margin-bottom:1rem}
+    .card a{color:var(--accent);text-decoration:none;font-weight:600}
+    footer{text-align:center;padding:2rem 1rem;font-size:.9rem;color:var(--text)}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:600px){
+      header{padding:1rem}
+      nav a{margin-left:.8rem;font-size:.9rem}
+      .hero h2{font-size:2.2rem}
+    }
+    /* Article page styles */
+    .video-wrapper{
+      position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:2rem 0;
+      background:#000;
+    }
+    .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+    article p{margin-bottom:1.2rem;text-align:justify}
+    article img{width:100%;border-radius:10px;margin:1.5rem 0}
+    /* About page styles */
+    .profile-card{background:var(--card);border-radius:16px;padding:2rem;margin:2rem 0;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+    .profile-card img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem}
+    /* Contact page styles */
+    form{background:var(--card);border-radius:16px;padding:2rem;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+    label{display:block;margin-bottom:.4rem;color:var(--heading)}
+    input,textarea{width:100%;padding:.75rem;border:none;border-radius:8px;margin-bottom:1.2rem;font-size:1rem;background:#0b0c10;color:var(--text)}
+    textarea{resize:vertical;min-height:140px}
+    button{
+      background:var(--accent);color:#000;border:none;padding:.75rem 2rem;border-radius:30px;
+      font-weight:600;cursor:pointer;transition:.3s
+    }
+    button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(102,252,241,.4)}
+    .social{margin-top:2.5rem;text-align:center}
+    .social a{color:var(--accent);margin:0 .8rem;text-decoration:none;font-size:1.1rem}
+  </style>
+</head>
+<body>
+<header>
+  <h1>විශ්වකෝෂය</h1>
+  <nav>
+    <a href="#home">මුල් පිටුව</a>
+    <a href="#article">ලිපිය</a>
+    <a href="#about">අපි ගැන</a>
+    <a href="#contact">සම්බන්ධ වන්න</a>
+    <a href="#privacy">පෞද්ගලිකත්වය</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <h2>අභිරහස් විශ්වය, විද්‍යාව සහ මිනිසා</h2>
+  <p>YouTube නාලිකාවේ නවතම දැනුම් වීඩියෝ සඳහා ලිපි කියවන්න.</p>
+  <a href="#articles" class="btn">ලිපි බලන්න</a>
+</section>
+
+<section id="articles">
+  <h2 style="text-align:center;margin-bottom:2.5rem;color:var(--heading);font-size:2rem">නවතම ලිපි</h2>
+  <div class="cards">
+    <article class="card">
+      <img src="https://source.unsplash.com/600x400/?space,galaxy" alt="ගැලැක්සි">
+      <div class="card-content">
+        <h3>අභිරහස් ගැලැක්සි මධ්‍යය</h3>
+        <p>සෑම ගැලැක්සියකම මධ්‍යයේ පවතින විශාල කළු රන්දු ගැන විශේෂ විමසුම.</p>
+        <a href="#article">කියවන්න →</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://source.unsplash.com/600x400/?brain,neurons" alt="මොළය">
+      <div class="card-content">
+        <h3>මිනිස් මොළයේ අසීරු රහස්</h3>
+        <p>අපේ මතකය, සිහින, හැඟීම් ඇතිවන ආකාරය විද්‍යාත්මකව.</p>
+        <a href="#article">කියවන්න →</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://source.unsplash.com/600x400/?mars,planet" alt="අඟහරු">
+      <div class="card-content">
+        <h3>අඟහරු මත ජීවිතය?</h3>
+        <p>අඟහරු ග්‍රහයේ ජලය, වායුගෝලය සහ ජීවය පිළිබඳ නවතම සෙවීම්.</p>
+        <a href="#article">කියවන්න →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<section id="article">
+  <article>
+    <h1>අභිරහස් ගැලැක්සි මධ්‍යය</h1>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <p>ඔබ කිසිදා රාත්‍රි අහස බලා තිබේද? එහි දිලිසෙන තාරකා අතරින් ඔබට දකින්නට ලැබෙන්නේ එක්තරා අභිරහසක කුඩා කොටසක් පමණි. ඒ අභිරහස නම් ගැලැක්සි මධ්‍යයේ පවතින විශාල කළු රන්දු (Supermassive Black Holes) ය.</p>
+
+    <img src="https://source.unsplash.com/1200x600/?galaxy,stars" alt="ගැලැක්සි රාත්‍රි අහස">
+
+    <p>විද්‍යාඥයින්ගේ අදහස අනුව සෑම ගැලැක්සියකම මධ්‍යයේ මෙවැනි කළු රන්දුවක් පවතී. එය සූර්යයා මිලියන ගණනකට වඩා විශාල විය හැක. උදාහරණයක් ලෙස අපේ මිල්කි වේ ගැලැක්සියේ මධ්‍යයේ පවතින Sagittarius A* නම් කළු රන්දුව සූර්යයා මිලියන 4.3 ක් පමණ බරයි.</p>
+
+    <h2>කළු රන්දු කියන්නේ මොකක්ද?</h2>
+    <p>කළු රන්දුවක් යනු එකතුවී ඇති ද්‍රව්‍යය එතරම් ඝන වී ඇති ස්ථානයකි එහි ගුරුත්ව බලය එතරම් බලවත් වන අතර එය ආලෝකය පවා පලා යාමට නොහැරවේ. ඒ නිසාම අපට එය දැකිය නොහැක.</p>
+
+    <h2>අපේ ගැලැක්සියේ මධ්‍යයේ සිදුවන්නේ කුමක්ද?</h2>
+    <p>Event Horizon Telescope නම් උපකරණ ජාලය 2019 දී මෙවැනි කළු රන්දුවක පළමු ඡායාරූපය ලබා ගත්තේ M87 ගැලැක්සියේ මධ්‍යයේ පවතින එකකි. එය ඉතිහාසයේ පළමු වතාවට මිනිසාට කළු රන්දුවක සෙරිනිමාව දැක ගැනීමට හැකියාව ලැබීමයි.</p>
+
+    <img src="https://source.unsplash.com/1200x600/?telescope,night" alt="ටෙලස්කෝපය">
+
+    <p>අනාගතයේ දී විද්‍යාඥයින් Sagittarius A* ද ඡායාරූපගත කිරීමට උත්සාහ කරයි. එය සාර්ථක වුවහොත් අපේම ගැලැක්සියේ මධ්‍යයේ අභිරහස අපට වඩාත් හොඳින් තේරුම් ගත හැක.</p>
+
+    <p>ඔබට මේ විශය පිළිබඳ තවත් දැනගන්නට අවශ්‍යද? ඉහත වීඩියෝව නරඳන්න සහ අදහසක් comment කරන්න.</p>
+  </article>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h1>අපි ගැන</h1>
+  <p>විශ්වකෝෂය යනු විශ්වය, විද්‍යාව, මිනිස් හැඟීම් සහ අභිරහස් පිළිබඳ සිංහලෙන් උගන්වන YouTube නාලිකාවකි. අපගේ අරමුණ වන්නේ සරල භාෂාවෙන්, විශ්වාසදායක තොරතුරු ඔබට ලබා දීමයි.</p>
+
+  <div class="profile-card">
+    <img src="https://source.unsplash.com/300x300/?portrait,man" alt="නිර්මාතෘ">
+    <h2>සංජීව මෙන්ඩිස්</h2>
+    <p>නිර්මාතෆ් / தொகுப்பායක</p>
+    <p>අභ්‍යවකාශ භෞතික විද්‍යා උපාධිධාරියෙකු වන සංජීව, 2020 සිට YouTube නාලිකාව පවත්වාගෙන යයි. ඔහුගේ අරමුණ වන්නේ විද්‍යාව සමාජගත කිරීමයි.</p>
+  </div>
+
+  <h2>අපගේ අරමුණු</h2>
+  <ul style="margin-left:1.5rem">
+    <li>විශ්වය පිළිබඳ නිවැරදි තොරතුරු සිංහලෙන් ලබා දීම</li>
+    <li>විද්‍යාත්මක සිතිවිලි රටාවක් වර්ධනය කිරීම</li>
+    <li>නව පරපුරකට දැනුම බෙදා හැරීම</li>
+  </ul>
+
+  <h2>අපට එරෙහිව ඇති අභියෝග</h2>
+  <p>සිංහල භාෂාවෙන් විද්‍යාත්මක වචන සොයා ගැනීම, තොරතුරු සරලව පැහැදිලි කිරීම සහ නවතම පර්යේෂණ යාවත්කාලීන කිරීම අපට ඇති ප්‍රධාන අභියෝග වේ. ඒත් ඔබේ ආදරය සහ සහයෝගය නිසා අපි මේ ගමන තවදුරටත් යනවා.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h1>අපට ලියන්න</h1>
+  <p>ඔබේ අදහස්, ලිපි යෝජනා හෝ සහයෝගය පිළිබඳ තොරතුරු අපට ලබා දෙන්න. අපි ඔබට ඉක්මනින් පිළිතුරු දෙන්නෙමු.</p>
+
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    <label>ඔබගේ නම</label>
+    <input type="text" name="name" required>
+
+    <label>විද්‍යුත් තැපැල් ලිපිනය</label>
+    <input type="email" name="email" required>
+
+    <label>විෂය</label>
+    <input type="text" name="subject" required>
+
+    <label>සන්දේශය</label>
+    <textarea name="message" required></textarea>
+
+    <button type="submit">යවන්න</button>
+  </form>
+
+  <div class="social">
+    <h2>සමාජ ජාල</h2>
+    <a href="https://youtube.com/@විශ්වකෝෂය" target="_blank">YouTube</a>
+    <a href="https://facebook.com/විශ්වකෝෂය" target="_blank">Facebook</a>
+    <a href="https://twitter.com/විශ්වකෝෂය" target="_blank">Twitter</a>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+  <h1>පෞද්ගලිකත්ව ප්‍රතිපත්තිය</h1>
+  <p>අවසාන යාවත්කාලීන කිරීම: 2024 ජනවාරි 19</p>
+
+  <h2>ඔබේ දත්ත භාවිතය</h2>
+  <p>අපගේ වෙබ් අඩවිය භාවිතයේදී අපි ඔබගේ පුද්ගලික තොරතුරු රැස් නොකරමු. අපට comment හෝ contact form හරහා ඔබ自愿ව ලබා දෙන තොරතුරු පමණක් භාවිතා වේ. එම තොරතුරු තෙවන පාර්ශවයකට බෙදා නොදෙයි.</p>
+
+  <h2>කුකීස් (Cookies)</h2>
+  <p>අපගේ වෙබ් අඩවිය කුකීස් භාවිතා නොකරයි. ඔබගේ බ්‍රව්සිං අත්දැකීම සම්පූර්ණයෙන්ම රහසිගත වේ.</p>
+
+  <h2>තෙවන පාර්ශව සබැඳි</h2>
+  <p>අපගේ ලිපි තුළ YouTube වීඩියෝ ඇතුළත් වේ. ඒවා YouTube සේවා ප්‍රතිපත්තියට යටත් වේ. ඔබට අවශ්‍ය නම් Google පෞද්ගලිකත්ව ප්‍රතිපත්තිය කියවිය හැක.</p>
+
+  <h2>ඔබේ අයිතිය</h2>
+  <p>ඔබට ඕනෑම වේලාවක අපට ලබා දුන් තොරතුරු මකා දැමීමට හෝ යාවත්කාලීන කිරීමට අයිතිය ඇත. ඒ සඳහා අපට විද්‍යුත් තැපෑලක් යවන්න.</p>
+
+  <h2>සම්බන්ධ වන්න</h2>
+  <p>මෙම ප්‍රතිපත්තිය පිළිබඳ ඔබට ප්‍රශ්න තිබේ නම්, කරුණාකර <a href="#contact" style="color:var(--accent)">මෙහි</a> අපට ලියන්න.</p>
+</section>
+
+<footer>
+  © 2024 විශ්වකෝෂය | <a href="#privacy" style="color:var(--accent)">පෞද්ගලිකත්ව ප්‍රතිපත්තිය</a>
+</footer>
+
+<script>
+  // Scroll animations
+  const cards=document.querySelectorAll('.card');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  },{threshold:.25});
+  cards.forEach(c=>io.observe(c));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav a').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){
+      e.preventDefault();
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
